@@ -148,7 +148,7 @@ Das Eingabefeld _Create pfSense_ ausfüllen und Return drücken. Damit wird eine
 
 Statt Auto (ZFS) nehmen wir Auto (UFS) und dann GPT statt MBR.
 
-Swap rauslöschen, um SSD nicht kaputt zu machen!
+Swap rauslöschen, um die SSD nicht kaputt zu machen!
 
 Am Ende nicht 'Reboot' wählen, sondern 'Shell' und dann ```poweroff``` eingeben.
 
