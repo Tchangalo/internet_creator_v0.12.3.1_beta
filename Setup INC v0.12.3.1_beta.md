@@ -106,7 +106,7 @@ ssh-copy-id user@uX
 
 ## **TEILAUTOMATISIERTES SETUP**
 
-Wer die folgenden Schritte des Aufsetzens der pfSense und des DHCP-Servers bereits einmal gemacht hat und Backups dieser Maschinen gemacht hat, kann diese Backups nun einfach restoren. Die Backups sollten natürlich nicht uralt sein.
+Wer die folgenden Schritte des Aufsetzens der pfSense und des DHCP-Servers bereits einmal gemacht hat und Backups dieser Machinen gemacht hat, kann diese Backups nun einfach restoren. Die Backups sollten natürlich nicht uralt sein.
 
 Beim _**Restore der pfSense**_ ist darauf zu achten, dass alle Bridges vorhanden sind, die auch auf dem Rechner vorhanden waren, auf dem das Backup erstellt wurde (also LANX bei _einem_ Clusterknoten bzw. LAN1 - LAN3 bei einem Standalone Server). Für jedes Interface der pfSense muss diejenige Bridge verfügbar sein, die ihm hardwaremäßig zugewiesen ist. Nötigenfalls anpassen.
 
