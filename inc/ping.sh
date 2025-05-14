@@ -7,7 +7,7 @@ last_router=$3
 for i in $(seq "$first_router" "$last_router"); do
     if [[ $i -lt 10 ]]; then
         rid="p${provider}r${i}v"
-        echo "Pinging cloudflare.com from Vyos $rid"
+        echo "Pinging cloudflare.com from VyOS $rid"
         ssh -o StrictHostKeyChecking=no "$rid" "ping -c 2 cloudflare.com"
         echo "------------------------------------------------------------------------------------------------------------------------"
     else
