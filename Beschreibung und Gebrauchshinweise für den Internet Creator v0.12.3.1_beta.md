@@ -276,6 +276,7 @@ Das Grundprinzip ist, dass _idealerweise_ eine Auslastung von 100% möglichst se
 ![bpytop1](Bilder/bpytop1.png)
 Bild 1: Normalmodus mit Start Delay 6 bei i7-4770
 
+
 ![bpytop2](Bilder/bpytop2.png)
 Bild 2: Fast Mode bei i7-4770
 
