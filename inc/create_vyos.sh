@@ -66,14 +66,16 @@ ansible-playbook -i inventories/inventory${provider}.yaml vyos_upgrade.yml -e "r
 # Delete old image in vyos-images
 cd $IMAGE_DIR || { echo -e "${R}Directory not found${NC}"; exit 1; }
 # Count the number of .iso files in the directory
-image_count=$(ls -1 vyos-*.iso | wc -l)
+image_count=$(ls vyos-*.iso 2>/dev/null | wc -l)
 
-# If more than one image exists, delete the older ones
 if [ "$image_count" -gt 1 ]; then
-# Find the newest image
-    latest_image=$(ls -t vyos-*.iso | head -n 1)
-    # Delete all older images
-    for image in $(ls -1 vyos-*.iso); do
+    # Find the file with the most recent ctime (status change time)
+    latest_image=$(ls -1 vyos-*.iso | while read -r file; do
+        echo "$(stat -c "%Z %n" "$file")"
+    done | sort -nr | head -n 1 | cut -d' ' -f2-)
+
+    # Delete all other files
+    for image in vyos-*.iso; do
         if [ "$image" != "$latest_image" ]; then
             rm -f "$image"
             echo -e "${C}Deleted from folder vyos-images: $image${NC}"
