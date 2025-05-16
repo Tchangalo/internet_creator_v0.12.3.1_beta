@@ -1,5 +1,3 @@
-# **Beschreibung und Gebrauchshinweise für den Internet Creator v0.12.3.1\_beta**
-
 ## **Inhalt:**
 
 1\. Einleitung
