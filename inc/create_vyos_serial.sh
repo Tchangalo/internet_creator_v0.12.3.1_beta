@@ -60,11 +60,14 @@ done
 
 # Delete old image in vyos-images
 cd $image_dir || { echo -e "${R}Directory not found${NC}"; exit 1; }
-image_count=$(ls -1 vyos-*.iso | wc -l)
+image_count=$(ls vyos-*.iso 2>/dev/null | wc -l)
 
 if [ "$image_count" -gt 1 ]; then
-    latest_image=$(ls -t vyos-*.iso | head -n 1)
-    for image in $(ls -1 vyos-*.iso); do
+    latest_image=$(ls -1 vyos-*.iso | while read -r file; do
+        echo "$(stat -c "%Z %n" "$file")"
+    done | sort -nr | head -n 1 | cut -d' ' -f2-)
+
+    for image in vyos-*.iso; do
         if [ "$image" != "$latest_image" ]; then
             rm -f "$image"
             echo -e "${C}Deleted from folder vyos-images: $image${NC}"
