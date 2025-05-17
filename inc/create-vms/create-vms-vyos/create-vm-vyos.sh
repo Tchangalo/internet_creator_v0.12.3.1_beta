@@ -29,12 +29,12 @@ fi
 vmid=${provider}0${provider}0$(printf '%02d' $router)
 mgmtmac=00:24:18:A${provider}:$(printf '%02d' $router):00
 
-# Destroy Vyos
+# Destroy VyOS
 echo -e "${C}Stopping and destroying router $vmid (if it exists)${NC}"
 qm stop $vmid || true
 qm destroy $vmid || true
 
-# Create Vyos
+# Create VyOS
 echo -e "${C}Creating router $vmid${NC}"
 qm create $vmid --name "p${provider}r${router}v" --ostype l26 --memory 1664 --balloon 1664 --cpu cputype=host --cores 4 --scsihw virtio-scsi-single --net0 virtio,bridge=vmbr1001,macaddr="${mgmtmac}"
 if [[ "$FSTYPE" == "zfs" ]]; then
